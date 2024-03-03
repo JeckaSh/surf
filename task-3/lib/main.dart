@@ -50,11 +50,12 @@ void main() {
   Mouse magicMouse = Mouse('Apple', 'Magic Mouse 3', 3);
 
   Computer desktop = Computer('Dell', 'Inspiron', 2021, mouse: wirelessMouse);
-  desktop.turnOn();
-  desktop.turnOff();
 
   Computer laptop =
       Computer.laptop('Apple', 'MacBook Air', 2020, mouse: magicMouse);
+
+  desktop.turnOn();
+  desktop.turnOff();
 
   laptop.getInfo();
   desktop.getInfo();
