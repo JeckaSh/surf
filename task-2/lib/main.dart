@@ -1,9 +1,3 @@
-import 'dart:ffi';
-
-int calculate() {
-  return 6 * 7;
-}
-
 enum Countries { brazil, russia, turkish, spain, japan }
 
 class Territory {
