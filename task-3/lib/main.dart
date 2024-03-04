@@ -4,13 +4,13 @@ class Computer {
   final int year;
   bool isWorking;
   bool isPortable;
-  Mouse mouse;
+  Mouse? mouse;
 
   Computer(this.brand, this.model, this.year,
-      {this.isWorking = true, this.isPortable = false, required this.mouse});
+      {this.isWorking = true, this.isPortable = false, this.mouse});
 
   Computer.laptop(this.brand, this.model, this.year,
-      {this.isWorking = true, required this.mouse})
+      {this.isWorking = true, this.mouse})
       : isPortable = true;
 
   void turnOn() {
@@ -32,8 +32,12 @@ class Computer {
   }
 
   void getInfo() {
-    print(
-        'Компьютер $brand $model $year года с мышкой ${mouse.brand} ${mouse.model}');
+    if (mouse != null) {
+      print(
+          'Компьютер $brand $model $year года с мышкой ${mouse?.brand} ${mouse?.model}');
+    } else {
+      print('Компьютер $brand $model $year года');
+    }
   }
 }
 
