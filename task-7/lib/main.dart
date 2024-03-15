@@ -1,23 +1,43 @@
 void main() {
-  final articles = [
-    Article(1, 'хлеб', 'Бородинский', 500, 5),
-    Article(2, 'хлеб', 'Белый', 200, 15),
-    Article(3, 'молоко', 'Полосатый кот', 50, 53),
-    Article(4, 'молоко', 'Коровка', 50, 47),
-    Article(5, 'вода', 'Апельсин', 25, 65),
-    Article(6, 'вода', 'Кашинская', 350, 5),
-  ];
-
   final priceLess100 = PriceFilter(100);
   final waterType = TypeFilter('вода');
   final amountLess80 = AmountFilter(80);
 
   final filterList = [priceLess100, waterType, amountLess80];
 
+  final articles = '''
+  1,хлеб,Бородинский,500,5
+  2,хлеб,Белый,200,15
+  3,молоко,Полосатый кот,50,53
+  4,молоко,Коровка,50,47
+  5,вода,Апельсин,25,65
+  6,вода,Бородинский,350,5
+  ''';
+
+  List<String> articleStrings = articles.split('\n');
+
+  List<Article> products = [];
+
+  for (final articleAsString in articleStrings) {
+    List<String> productsAsList = articleAsString.split(',');
+
+    if (productsAsList.length == 5) {
+      int? id = int.tryParse(productsAsList[0]);
+      String type = productsAsList[1];
+      String title = productsAsList[2];
+      int? price = int.tryParse(productsAsList[3]);
+      int? amount = int.tryParse(productsAsList[4]);
+
+      if (id != null && price != null && amount != null) {
+        products.add(Article(id, type, title, price, amount));
+      }
+    }
+  }
+
   print('\n');
-  applyFilter(articles, priceLess100);
+  applyFilter(products, priceLess100);
   print('\n');
-  applyFilterList(articles, filterList);
+  applyFilterList(products, filterList);
   print('\n');
 }
 
