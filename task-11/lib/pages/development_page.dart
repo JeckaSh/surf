@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:surf_flutter_courses_template/widgets/page_widget.dart';
+import 'package:surf_flutter_courses_template/widgets/to_be_cont_widget.dart';
 
-import 'main_page.dart';
+import '../styles/styles.dart';
 
 class DevelopmentPage extends StatelessWidget {
   const DevelopmentPage({super.key});
@@ -9,41 +11,25 @@ class DevelopmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: appBarColor,
         title: const Text(
           'Development',
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 50,
-              fontFamily: 'Moskitoes'),
+          style: textStyleBig,
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 133, 157, 168),
-      body: const Padding(
-        padding: EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              WhiteSpacer(),
-              Text(
-                'experience in development',
-                style: textStyle,
-              ),
-              WhiteSpacer(),
-              Text(
-                'Simple tower defence game on C++',
-                style: textStyle,
-              ),
-              Text(
-                'Creating mods for games',
-                style: textStyle,
-              ),
-              WhiteSpacer(),
-              ToBeContWidget(),
-            ],
+      backgroundColor: backgroundColor,
+      body: const PageWidget(
+        children: [
+          Text(
+            'experience in development:',
+            style: textStyle,
           ),
-        ),
+          Text(
+            'Simple tower defence game on C++\nCreating mods for games',
+            style: textStyle,
+          ),
+          ToBeContWidget(),
+        ],
       ),
     );
   }

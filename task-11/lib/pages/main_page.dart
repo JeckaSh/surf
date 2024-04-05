@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../resources/svg_images.dart';
+import '../styles/styles.dart';
+
 class MainPageWidget extends StatefulWidget {
   const MainPageWidget({
     super.key,
@@ -16,17 +19,13 @@ class _MainPageWidgetState extends State<MainPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: appBarColor,
         title: const Text(
           'Business Card',
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 50,
-              fontFamily: 'Moskitoes'),
+          style: textStyleBig,
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 133, 157, 168),
+      backgroundColor: backgroundColor,
       body: const BusinessCardWidget(),
     );
   }
@@ -71,17 +70,6 @@ class BusinessCardWidget extends StatelessWidget {
   }
 }
 
-const String aboutMeIcon = 'assets/images/about.svg';
-const String aboutWork = 'assets/images/work.svg';
-const String aboutHobbies = 'assets/images/hobbies.svg';
-const String aboutDevExp = 'assets/images/dev.svg';
-
-const textStyle = TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.w700,
-    fontSize: 30,
-    fontFamily: 'Moskitoes');
-
 class DevelopmentWidget extends StatelessWidget {
   const DevelopmentWidget({
     super.key,
@@ -94,7 +82,7 @@ class DevelopmentWidget extends StatelessWidget {
     }
 
     return Material(
-      color: Colors.indigo,
+      color: appBarColor,
       child: InkWell(
         onTap: developmentButton,
         child: SizedBox(
@@ -108,7 +96,7 @@ class DevelopmentWidget extends StatelessWidget {
                 style: textStyle,
               ),
               SvgPicture.asset(
-                aboutDevExp,
+                SvgImages.aboutDevExp,
                 width: 25,
                 height: 25,
                 colorFilter:
@@ -134,7 +122,7 @@ class MyHobbiesWidget extends StatelessWidget {
     }
 
     return Material(
-      color: Colors.indigo,
+      color: appBarColor,
       child: InkWell(
         onTap: hobbiesButton,
         child: SizedBox(
@@ -148,7 +136,7 @@ class MyHobbiesWidget extends StatelessWidget {
                 style: textStyle,
               ),
               SvgPicture.asset(
-                aboutHobbies,
+                SvgImages.aboutHobbies,
                 width: 25,
                 height: 25,
                 colorFilter:
@@ -174,7 +162,7 @@ class AboutMyWorkWidget extends StatelessWidget {
     }
 
     return Material(
-      color: Colors.indigo,
+      color: appBarColor,
       child: InkWell(
         onTap: aboutWorkButton,
         child: SizedBox(
@@ -188,7 +176,7 @@ class AboutMyWorkWidget extends StatelessWidget {
                 style: textStyle,
               ),
               SvgPicture.asset(
-                aboutWork,
+                SvgImages.aboutWork,
                 width: 25,
                 height: 25,
                 colorFilter:
@@ -217,7 +205,7 @@ class AboutMeWidget extends StatelessWidget {
       ///
       /// [Material] for splash in [InkWell] button
       ///
-      color: Colors.indigo,
+      color: appBarColor,
       child: InkWell(
         onTap: aboutMeButton,
         child: SizedBox(
@@ -231,7 +219,7 @@ class AboutMeWidget extends StatelessWidget {
                 style: textStyle,
               ),
               SvgPicture.asset(
-                aboutMeIcon,
+                SvgImages.aboutMeIcon,
                 width: 25,
                 height: 25,
                 colorFilter:
@@ -264,7 +252,7 @@ class _AvatarPhotoWidgetState extends State<AvatarPhotoWidget> {
 
   void avatarMessage() {
     var snack = SnackBar(
-      backgroundColor: Colors.indigo,
+      backgroundColor: appBarColor,
       showCloseIcon: true,
       duration: const Duration(seconds: 2),
       content: tapped
@@ -293,7 +281,7 @@ class _AvatarPhotoWidgetState extends State<AvatarPhotoWidget> {
         clipBehavior: Clip.hardEdge,
         width: tapped ? 350 : 200,
         height: tapped ? 350 : 200,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(milliseconds: 800),
         decoration: const BoxDecoration(
           color: Colors.indigo,
           shape: BoxShape.circle,
@@ -302,68 +290,6 @@ class _AvatarPhotoWidgetState extends State<AvatarPhotoWidget> {
           'assets/images/avatar.png',
           fit: BoxFit.cover,
         ),
-      ),
-    );
-  }
-}
-
-class ToBeContWidget extends StatelessWidget {
-  const ToBeContWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'To be continued...',
-          style: textStyle,
-        ),
-      ],
-    );
-  }
-}
-
-class WhiteSpacer extends StatelessWidget {
-  const WhiteSpacer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Container(
-        height: 5,
-        width: 500,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(5))),
-      ),
-    );
-  }
-}
-
-class WhiteVerticalSpacer extends StatelessWidget {
-  final double widgetHeight;
-
-  const WhiteVerticalSpacer({
-    super.key,
-    required this.widgetHeight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Container(
-        height: widgetHeight,
-        width: 5,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(5))),
       ),
     );
   }
