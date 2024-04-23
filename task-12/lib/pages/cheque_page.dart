@@ -50,7 +50,7 @@ class _ChequePageState extends State<ChequePage> {
             final data = snapshot.data;
             return data != null
                 ? _ContentWidget(data: data)
-                : const EmptyPage(string: 'Empty');
+                : const EmptyPage(title: 'Empty');
           }
         }
 

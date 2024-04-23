@@ -22,13 +22,13 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = const [
     EmptyPage(
-      string: 'Page A',
+      title: 'Page A',
     ),
     EmptyPage(
-      string: 'Page B',
+      title: 'Page B',
     ),
     EmptyPage(
-      string: 'Page C',
+      title: 'Page C',
     ),
     ChequePage(id: 1),
   ];
