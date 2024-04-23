@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:surf_flutter_courses_template/style/colors.dart';
+
+abstract class MyButtonStyles {
+  static final bigGreenButton = ButtonStyle(
+    backgroundColor: MaterialStateProperty.all(MyAppColors.appBarColorSelected),
+    minimumSize: MaterialStateProperty.all(
+      const Size(1000, 50),
+    ),
+    shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+  );
+  static final sortButton = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(MyAppColors.sortButtonColor),
+      shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+}
