@@ -60,7 +60,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
 class _ContentWidget extends StatelessWidget {
   final List<PhotoEntity> data;
 
-  const _ContentWidget({super.key, required this.data});
+  const _ContentWidget({required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _ContentWidget extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
 
-        /// для квадратных изображений
+        // для квадратных изображений
         childAspectRatio: 1,
         mainAxisSpacing: 5,
         crossAxisSpacing: 3,
@@ -88,7 +88,6 @@ class _PhotoWidget extends StatelessWidget {
   final List<PhotoEntity> photoList;
 
   const _PhotoWidget({
-    super.key,
     required this.indexSelectedPhoto,
     required this.photoList,
   });
@@ -146,7 +145,7 @@ class _PhotoWidget extends StatelessWidget {
 }
 
 class _EmptyWidget extends StatelessWidget {
-  const _EmptyWidget({super.key});
+  const _EmptyWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +156,7 @@ class _EmptyWidget extends StatelessWidget {
 }
 
 class _LoadingWidget extends StatelessWidget {
-  const _LoadingWidget({super.key});
+  const _LoadingWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +165,7 @@ class _LoadingWidget extends StatelessWidget {
 }
 
 class _ErrorWidget extends StatelessWidget {
-  const _ErrorWidget({super.key});
+  const _ErrorWidget();
 
   @override
   Widget build(BuildContext context) {

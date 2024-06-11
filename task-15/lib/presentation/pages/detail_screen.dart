@@ -21,7 +21,7 @@ class _DetailScreenState extends State<DetailScreen> {
   late double _currentPageValue;
 
   /// Параметр уменьшения предыдущей и следующей фотографии
-  final double scaleFactor = 0.8;
+  static const double scaleFactor = 0.8;
 
   @override
   void initState() {
@@ -74,10 +74,10 @@ class _DetailScreenState extends State<DetailScreen> {
           itemBuilder: (_, index) {
             final photo = photos[index];
 
-            /// Создание единичной матрицы для преобразования виджета
-            Matrix4 matrix = Matrix4.identity();
+            // Создание единичной матрицы для преобразования виджета
+            var matrix = Matrix4.identity();
 
-            /// Минимальное значение масштаба страницы
+            // Минимальное значение масштаба страницы
             var scale = 0.8;
 
             /// Проверка, является ли текущая страница предыдущей, центральное или следующей
@@ -88,22 +88,22 @@ class _DetailScreenState extends State<DetailScreen> {
               scale = 1 - (_currentPageValue - index).abs() * (1 - scaleFactor);
             }
 
-            /// Вычисляет значение смещения для текущей страницы
-            var transform = heightPageView * (1 - scale) / 2;
+            // Вычисляет значение смещения для текущей страницы
+            final transform = heightPageView * (1 - scale) / 2;
 
-            /// Устанавливает значение диагонали матрицы, которые определяют масштаб виджета
+            /// [diagonal3Values] устанавливает значение диагонали матрицы,
+            /// которые определяют масштаб виджета
+            /// [setTranslationRaw] устанавливает смещение виджета для
+            /// выравнивания по центру по вертикали
             matrix = Matrix4.diagonal3Values(1.0, scale, 1.0)
-
-              /// Устанавливает смещение виджета для выравнивания по центру по вертикали
               ..setTranslationRaw(0, transform, 0);
 
             return Transform(
               transform: matrix,
               child: _PhotoFullScreenWidget(
-                  photo: photo,
-                  tag: index == _currentPageValue.floor()
-                      ? photo.imageUrl
-                      : null),
+                photo: photo,
+                tag: index == _currentPageValue.floor() ? photo.imageUrl : null,
+              ),
             );
           },
         ),
@@ -120,7 +120,6 @@ class _PhotoFullScreenWidget extends StatelessWidget {
   final String? tag;
 
   const _PhotoFullScreenWidget({
-    super.key,
     required this.photo,
     this.tag,
   });
@@ -166,7 +165,7 @@ class _PhotoFullScreenWidget extends StatelessWidget {
 }
 
 class _BackButton extends StatelessWidget {
-  const _BackButton({super.key});
+  const _BackButton();
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +189,6 @@ class _PhotosIndicator extends StatelessWidget {
   final double numberCurrentPhoto;
 
   const _PhotosIndicator({
-    super.key,
     required this.numberOfPhotos,
     required this.numberCurrentPhoto,
   });
