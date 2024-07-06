@@ -163,8 +163,15 @@ class _ApplyButtonWidget extends StatelessWidget {
       ),
     );
 
+    // ignore: avoid_print
+    print(
+      'current theme after open bottomsheet: ${bottomSheetModel.appState.currentTheme}',
+    );
+
     void onTap() {
       bottomSheetModel.saveTheme();
+      // ignore: avoid_print
+      print('theme saved ${bottomSheetModel.appState.currentTheme}');
       Navigator.of(context).pop();
       // ignore: avoid_print
       print('accept button was pressed');

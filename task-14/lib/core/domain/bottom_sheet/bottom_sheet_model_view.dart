@@ -67,6 +67,8 @@ class ThemeChangerBottomSheetModel extends BaseWidgetModel {
   void init() {
     selectedTheme = _state.currentTheme;
     _addThemeTypes();
+    // ignore: avoid_print
+    print('init current theme is: ${_state.currentTheme}');
   }
 
   @override
