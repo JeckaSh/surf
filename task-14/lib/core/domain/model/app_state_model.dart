@@ -27,6 +27,7 @@ class AppStateModel extends ChangeNotifier {
             AppStrings.prefsThemeKey,
             theme.toString(),
           );
+      notifyListeners();
     }
   }
 }
