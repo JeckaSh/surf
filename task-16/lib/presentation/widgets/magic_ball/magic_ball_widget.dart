@@ -5,6 +5,7 @@ import 'package:surf_flutter_courses_template/assets/duration_time.dart';
 import 'package:surf_flutter_courses_template/core/domain/widget_status_model/widget_status_model.dart';
 import 'package:surf_flutter_courses_template/presentation/pages/magic_ball_page/magic_ball_widget_model.dart';
 import 'package:surf_flutter_courses_template/presentation/widgets/prediction/prediction_widget.dart';
+import 'package:surf_flutter_courses_template/presentation/widgets/progress_dots_indicator/progress_dots_indicator.dart';
 
 class MagicBallWidget extends StatefulWidget {
   /// Коллбэк обработчик нажатия на магический шар
@@ -23,21 +24,29 @@ class _MagicBallWidgetState extends State<MagicBallWidget> {
   @override
   Widget build(BuildContext context) {
     final widgetModel = context.read<MagicBallWidgetModel>();
+    const defaultSize = 1.0;
+    const zoomSize = 10.0;
 
     return SizedBox.square(
       dimension: 300,
       child: GestureDetector(
         onTap: widget.onTap,
-        child: CircleAvatar(
-          backgroundImage: const AssetImage(ImagePath.ball),
-          child: StreamBuilder<WidgetStatusModel>(
-            stream: widgetModel.widgetStatusController,
-            builder: (context, snapshot) {
-              return MagicBallContentWrapper(
-                status: widgetModel.widgetStatus,
-              );
-            },
-          ),
+        child: StreamBuilder<WidgetStatusModel>(
+          stream: widgetModel.widgetStatusController,
+          builder: (context, snapshot) {
+            return AnimatedScale(
+              duration: DurationTime.extend,
+              scale: widgetModel.widgetStatus == WidgetStatusModel.loading
+                  ? zoomSize
+                  : defaultSize,
+              child: CircleAvatar(
+                backgroundImage: const AssetImage(ImagePath.ball),
+                child: MagicBallContentWrapper(
+                  status: widgetModel.widgetStatus,
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -110,7 +119,7 @@ class MagicBallContentWidget extends StatelessWidget {
         }
       case WidgetStatusModel.loading:
         {
-          return const CircularProgressIndicator();
+          return const ProgressDotsIndicator();
         }
       case WidgetStatusModel.init:
       default:

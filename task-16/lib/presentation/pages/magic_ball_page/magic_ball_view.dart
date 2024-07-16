@@ -48,6 +48,14 @@ class _MagicBallViewState extends State<MagicBallView> {
             child: Stack(
               alignment: Alignment.center,
               children: [
+                Positioned(
+                  bottom: height / 2 - 280,
+                  child: const ShadowBallWidget(),
+                ),
+                const Positioned(
+                  bottom: 40,
+                  child: HintWidget(),
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
@@ -56,14 +64,6 @@ class _MagicBallViewState extends State<MagicBallView> {
                       onTap: widgetModel.getPrediction,
                     ),
                   ],
-                ),
-                Positioned(
-                  bottom: height / 2 - 280,
-                  child: const ShadowBallWidget(),
-                ),
-                const Positioned(
-                  bottom: 40,
-                  child: HintWidget(),
                 ),
               ],
             ),
@@ -109,54 +109,3 @@ class HintWidget extends StatelessWidget {
     );
   }
 }
-
-// class MagicBallScale extends StatefulWidget {
-//   const MagicBallScale({super.key});
-
-//   @override
-//   State<MagicBallScale> createState() => LogoScaleState();
-// }
-
-// class LogoScaleState extends State<MagicBallScale> {
-//   double scale = 1.0;
-
-//   void _changeScale() {
-//     setState(() => scale = scale == 1.0 ? 3.0 : 1.0);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final size = MediaQuery.sizeOf(context);
-//     return GestureDetector(
-//       onTap: _changeScale,
-//       child: SizedBox(
-//         child: AnimatedScale(
-//           duration: const Duration(seconds: 1),
-//           scale: scale,
-//           child: MagicBall(
-//             size: size,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class MagicBall extends StatelessWidget {
-//   const MagicBall({
-//     super.key,
-//     required this.size,
-//   });
-
-//   final Size size;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Image.asset(
-//       ImagePath.ball,
-//       height: size.height,
-//       width: size.width,
-//       fit: BoxFit.cover,
-//     );
-//   }
-// }
