@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:surf_flutter_courses_template/assets/app_colors.dart';
 
-/// Индикатор загрузки
+/// Индикатор загрузки в виде трёх точек
 class ProgressDotsIndicator extends StatefulWidget {
   const ProgressDotsIndicator({super.key});
 
@@ -12,7 +12,6 @@ class ProgressDotsIndicator extends StatefulWidget {
 
 class _ProgressDotsIndicatorState extends State<ProgressDotsIndicator>
     with SingleTickerProviderStateMixin {
-  /// Контроллер анимации
   late AnimationController _controller;
 
   /// Начальная точка индикатора
